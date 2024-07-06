@@ -20,7 +20,7 @@ for test_dir in tests/*; do
 
     bin/run.sh "${test_dir_name}" "${test_dir_path}" "${test_dir_path}"
 
-    for file in analysis.json tags.json; do
+    for file in analysis.json; do
         expected_file="expected_${file}"
         echo "${test_dir_name}: comparing ${file} to ${expected_file}"
 

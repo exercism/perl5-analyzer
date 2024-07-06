@@ -24,19 +24,12 @@ fi
 slug="$1"
 solution_dir=$(realpath "${2%/}")
 output_dir=$(realpath "${3%/}")
-analysis_file="${output_dir}/analysis.json"
-tags_file="${output_dir}/tags.json"
 
 # Create the output directory if it doesn't exist
 mkdir -p "${output_dir}"
 
 echo "${slug}: analyzing..."
 
-# Analyze the solution
-# TODO: replace the below command with your own command(s) 
-# to analyze the solution and output the analysis.json and
-# tags.json files
-echo '{"comments": []}' > "${analysis_file}"
-echo '{"tags": []}' > "${tags_file}"
+perl ./bin/run.pl "${slug}" "${solution_dir}" "${output_dir}"
 
 echo "${slug}: done"
