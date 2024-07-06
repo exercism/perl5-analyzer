@@ -31,7 +31,7 @@ sub module_files ($path) {
         return map { module_files($_) } $path->children;
     }
     elsif (substr($path->basename, -3) eq '.pm') {
-        return $path;
+        return $path->stringify;
     }
 
     return;
