@@ -1,0 +1,18 @@
+only = 1
+severity = brutal
+
+[BuiltinFunctions::ProhibitVoidGrep]
+[BuiltinFunctions::ProhibitVoidMap]
+[Community::ArrayAssignAref]
+[Community::DollarAB]
+[Community::MultidimensionalArrayEmulation]
+[Community::StrictWarnings]
+[ControlStructures::ProhibitUnreachableCode]
+[Modules::ProhibitAutomaticExportation]
+[Modules::ProhibitConditionalUseStatements]
+[RegularExpressions::ProhibitUnusedCapture]
+[Subroutines::RequireFinalReturn]
+[Variables::ProhibitConditionalDeclarations]
+[Variables::ProhibitPerl4PackageNames]
+[Variables::ProhibitReusedNames]
+[Variables::ProhibitUnusedVariables]

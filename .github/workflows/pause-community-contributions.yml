@@ -17,6 +17,6 @@ jobs:
     if: github.repository_owner == 'exercism' # Stops this job from running on forks
     uses: exercism/github-actions/.github/workflows/community-contributions.yml@main
     with:
-      forum_category: perl5
+      forum_category: generic
     secrets:
       github_membership_token: ${{ secrets.COMMUNITY_CONTRIBUTIONS_WORKFLOW_TOKEN }}
