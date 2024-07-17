@@ -18,8 +18,11 @@ sub run ($slug, $submit_dir, $output_dir) {
             map { sub ($obj) {
                 {
                     comment => 'perl5.general.perlcritic',
-                    params  => { map { $_ => $obj->$_ } qw<description diagnostics filename line_number policy> },
-                    type    => 'actionable',
+                    params  => {
+                        (map { $_ => $obj->$_ } qw<description filename line_number policy>),
+                        diagnostics => $obj->diagnostics =~ s/^ {4}//gmr,
+                    },
+                    type => 'actionable',
                 }
             }->($_) } @violations
         ],
