@@ -27,7 +27,7 @@ jobs:
           context: .
           push: false
           load: true
-          tags: exercism/analyzer
+          tags: exercism/perl5-analyzer
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

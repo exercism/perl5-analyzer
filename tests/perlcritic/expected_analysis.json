@@ -3,33 +3,22 @@
     {
       "comment" : "perl5.general.perlcritic",
       "params" : {
+        "description" : "Missing strict or warnings",
+        "diagnostics" : "    The the strict manpage and the warnings manpage pragmas help avoid many\n    common pitfalls such as misspellings, scoping issues, and performing\n    operations on undefined values. Warnings can also alert you to\n    deprecated or experimental functionality. The pragmas may either be\n    explicitly imported with `use', or indirectly through a number of\n    importer modules such as the Moose manpage or the strictures manpage.\n    the strict manpage is also enabled automatically with a `use'\n    declaration of perl version 5.12 or higher, as is the warnings manpage\n    with a `use' declaration of 5.36 or higher.\n\n      use strict;\n      use warnings;\n\n      use Moose;\n\n      use 5.012;\n      use warnings;\n\n      use 5.036;\n\n    This policy is similar to the core policies the\n    Perl::Critic::Policy::TestingAndDebugging::RequireUseStrict manpage and\n    the Perl::Critic::Policy::TestingAndDebugging::RequireUseWarnings\n    manpage, but combines them into one policy in the `community' theme. The\n    default modules recognized as importing the strict manpage and the\n    warnings manpage are defined by the same constants as the core policies,\n    the section on \"@STRICT_EQUIVALENT_MODULES\" in the\n    Perl::Critic::Utils::Constants manpage. To define additional modules,\n    see the section on \"CONFIGURATION\".",
+        "filename" : "/opt/analyzer/tests/perlcritic/lib/HelloWorld.pm",
+        "line_number" : 1,
+        "policy" : "Perl::Critic::Policy::Community::StrictWarnings"
+      },
+      "type" : "actionable"
+    },
+    {
+      "comment" : "perl5.general.perlcritic",
+      "params" : {
         "description" : "Subroutine \"hello\" does not end with \"return\"",
         "diagnostics" : "    Require all subroutines to terminate explicitly with one of the\n    following: `return', `carp', `croak', `die', `exec', `exit', `goto', or\n    `throw'.\n\n    Subroutines without explicit return statements at their ends can be\n    confusing. It can be challenging to deduce what the return value will\n    be.\n\n    Furthermore, if the programmer did not mean for there to be a\n    significant return value, and omits a return statement, some of the\n    subroutine's inner data can leak to the outside. Consider this case:\n\n        package Password;\n        # every time the user guesses the password wrong, its value\n        # is rotated by one character\n        my $password;\n        sub set_password {\n            $password = shift;\n        }\n        sub check_password {\n            my $guess = shift;\n            if ($guess eq $password) {\n                unlock_secrets();\n            } else {\n                $password = (substr $password, 1).(substr $password, 0, 1);\n            }\n        }\n        1;\n\n    In this case, the last statement in check_password() is the assignment.\n    The result of that assignment is the implicit return value, so a wrong\n    guess returns the right password! Adding a `return;' at the end of that\n    subroutine solves the problem.\n\n    The only exception allowed is an empty subroutine.\n\n    Be careful when fixing problems identified by this Policy; don't blindly\n    put a `return;' statement at the end of every subroutine.",
         "filename" : "/opt/analyzer/tests/perlcritic/lib/HelloWorld.pm",
         "line_number" : 6,
         "policy" : "Perl::Critic::Policy::Subroutines::RequireFinalReturn"
-      },
-      "type" : "actionable"
-    },
-    {
-      "comment" : "perl5.general.perlcritic",
-      "params" : {
-        "description" : "Code before strictures are enabled",
-        "diagnostics" : "    Using strictures is probably the single most effective way to improve\n    the quality of your code. This policy requires that the `'use strict''\n    statement must come before any other statements except `package',\n    `require', and other `use' statements. Thus, all the code in the entire\n    package will be affected.\n\n    There are special exemptions for Moose, Moose::Role, and\n    Moose::Util::TypeConstraints because they enforces strictness; e.g.\n    `'use Moose'' is treated as equivalent to `'use strict''.\n\n    The maximum number of violations per document for this policy defaults\n    to 1.",
-        "filename" : "/opt/analyzer/tests/perlcritic/lib/HelloWorld.pm",
-        "line_number" : 6,
-        "policy" : "Perl::Critic::Policy::TestingAndDebugging::RequireUseStrict"
-      },
-      "type" : "actionable"
-    },
-    {
-      "comment" : "perl5.general.perlcritic",
-      "params" : {
-        "description" : "Code before warnings are enabled",
-        "diagnostics" : "    Using warnings, and paying attention to what they say, is probably the\n    single most effective way to improve the quality of your code. This\n    policy requires that the `'use warnings'' statement must come before any\n    other statements except `package', `require', and other `use'\n    statements. Thus, all the code in the entire package will be affected.\n\n    There are special exemptions for Moose, Moose::Role, and\n    Moose::Util::TypeConstraints because they enforces warnings; e.g. `'use\n    Moose'' is treated as equivalent to `'use warnings''.\n\n    This policy will not complain if the file explicitly states that it is\n    compatible with a version of perl prior to 5.6 via an include statement,\n    e.g. by having `require 5.005' in it.\n\n    The maximum number of violations per document for this policy defaults\n    to 1.",
-        "filename" : "/opt/analyzer/tests/perlcritic/lib/HelloWorld.pm",
-        "line_number" : 6,
-        "policy" : "Perl::Critic::Policy::TestingAndDebugging::RequireUseWarnings"
       },
       "type" : "actionable"
     },
