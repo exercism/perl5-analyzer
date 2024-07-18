@@ -4,7 +4,9 @@ use v5.40;
 
 use Cpanel::JSON::XS ();
 use Perl::Critic ();
+use Perl::Critic::Utils::POD qw<get_raw_pod_section_for_module>;
 use Path::Tiny qw<path>;
+use Pod::Markdown ();
 
 run(@ARGV) unless caller;
 
@@ -20,7 +22,7 @@ sub run ($slug, $submit_dir, $output_dir) {
                     comment => 'perl5.general.perlcritic',
                     params  => {
                         (map { $_ => $obj->$_ } qw<description filename line_number policy>),
-                        diagnostics => $obj->diagnostics =~ s/^ {4}//gmr,
+                        diagnostics => markdown_description($obj->policy),
                     },
                     type => 'actionable',
                 }
@@ -38,4 +40,11 @@ sub module_files ($path) {
     }
 
     return;
+}
+
+sub markdown_description ($module) {
+    my $parser = Pod::Markdown->new;
+    $parser->output_string(\my $md);
+    $parser->parse_string_document(get_raw_pod_section_for_module $module, 'DESCRIPTION');
+    return trim($md =~ s/.*DESCRIPTION$//mr);
 }
