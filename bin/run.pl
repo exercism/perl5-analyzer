@@ -46,5 +46,5 @@ sub markdown_description ($module) {
     my $parser = Pod::Markdown->new;
     $parser->output_string(\my $md);
     $parser->parse_string_document(get_raw_pod_section_for_module $module, 'DESCRIPTION');
-    return $md =~ s/.*DESCRIPTION\n\n//r;
+    return trim($md =~ s/.*DESCRIPTION$//mr);
 }
