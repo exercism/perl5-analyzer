@@ -1,0 +1,26 @@
+{
+  "comments" : [
+    {
+      "comment" : "perl5.general.perlcritic",
+      "params" : {
+        "description" : "\"grep\" used in void context",
+        "diagnostics" : "`map` and `grep` are intended to be pure functions, not mutators.\nIf you want to iterate with side-effects, then you should use a proper\n`for` or `foreach` loop.\n\n    grep{ print frobulate($_) } @list;           #not ok\n    print map{ frobulate($_) } @list;            #ok\n\n    grep{ $_ = lc $_ } @list;                    #not ok\n    for( @list ){ $_ = lc $_  };                 #ok\n\n    map{ push @frobbed, frobulate($_) } @list;   #not ok\n    @frobbed = map { frobulate($_) } @list;      #ok",
+        "filename" : "lib/HelloWorld.pm",
+        "line_number" : 6,
+        "policy" : "Perl::Critic::Policy::BuiltinFunctions::ProhibitVoidGrep"
+      },
+      "type" : "actionable"
+    },
+    {
+      "comment" : "perl5.general.perlcritic",
+      "params" : {
+        "description" : "\"map\" used in void context",
+        "diagnostics" : "`map` and `grep` are intended to be pure functions, not mutators.\nIf you want to iterate with side-effects, then you should use a proper\n`for` or `foreach` loop.\n\n    grep{ print frobulate($_) } @list;           #not ok\n    print map{ frobulate($_) } @list;            #ok\n\n    grep{ $_ = lc $_ } @list;                    #not ok\n    for( @list ){ $_ = lc $_  };                 #ok\n\n    map{ push @frobbed, frobulate($_) } @list;   #not ok\n    @frobbed = map { frobulate($_) } @list;      #ok",
+        "filename" : "lib/HelloWorld.pm",
+        "line_number" : 7,
+        "policy" : "Perl::Critic::Policy::BuiltinFunctions::ProhibitVoidMap"
+      },
+      "type" : "actionable"
+    }
+  ]
+}

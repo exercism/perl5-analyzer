@@ -10,7 +10,6 @@ severity = brutal
 [ControlStructures::ProhibitUnreachableCode]
 [Modules::ProhibitAutomaticExportation]
 [Modules::ProhibitConditionalUseStatements]
-[RegularExpressions::ProhibitUnusedCapture]
 [Subroutines::RequireFinalReturn]
 [Variables::ProhibitConditionalDeclarations]
 [Variables::ProhibitPerl4PackageNames]

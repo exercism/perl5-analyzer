@@ -1,0 +1,15 @@
+{
+  "comments" : [
+    {
+      "comment" : "perl5.general.perlcritic",
+      "params" : {
+        "description" : "Missing strict or warnings",
+        "diagnostics" : "The [strict](https://metacpan.org/pod/strict) and [warnings](https://metacpan.org/pod/warnings) pragmas help avoid many common pitfalls such as\nmisspellings, scoping issues, and performing operations on undefined values.\nWarnings can also alert you to deprecated or experimental functionality. The\npragmas may either be explicitly imported with `use`, or indirectly through a\nnumber of importer modules such as [Moose](https://metacpan.org/pod/Moose) or [strictures](https://metacpan.org/pod/strictures). [strict](https://metacpan.org/pod/strict) is also\nenabled automatically with a `use` declaration of perl version 5.12 or higher,\nas is [warnings](https://metacpan.org/pod/warnings) with a `use` declaration of 5.36 or higher.\n\n    use strict;\n    use warnings;\n\n    use Moose;\n\n    use 5.012;\n    use warnings;\n\n    use 5.036;\n\nThis policy is similar to the core policies\n[Perl::Critic::Policy::TestingAndDebugging::RequireUseStrict](https://metacpan.org/pod/Perl%3A%3ACritic%3A%3APolicy%3A%3ATestingAndDebugging%3A%3ARequireUseStrict) and\n[Perl::Critic::Policy::TestingAndDebugging::RequireUseWarnings](https://metacpan.org/pod/Perl%3A%3ACritic%3A%3APolicy%3A%3ATestingAndDebugging%3A%3ARequireUseWarnings), but combines\nthem into one policy in the `community` theme. The default modules recognized\nas importing [strict](https://metacpan.org/pod/strict) and [warnings](https://metacpan.org/pod/warnings) are defined by the same constants as the\ncore policies, [\"@STRICT\\_EQUIVALENT\\_MODULES\" in Perl::Critic::Utils::Constants](https://metacpan.org/pod/Perl%3A%3ACritic%3A%3AUtils%3A%3AConstants#STRICT_EQUIVALENT_MODULES).\nTo define additional modules, see [\"CONFIGURATION\"](#configuration).",
+        "filename" : "lib/HelloWorld.pm",
+        "line_number" : 1,
+        "policy" : "Perl::Critic::Policy::Community::StrictWarnings"
+      },
+      "type" : "actionable"
+    }
+  ]
+}

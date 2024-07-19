@@ -1,0 +1,15 @@
+{
+  "comments" : [
+    {
+      "comment" : "perl5.general.perlcritic",
+      "params" : {
+        "description" : "Symbols are exported by default",
+        "diagnostics" : "When using [Exporter](https://metacpan.org/pod/Exporter), symbols placed in the `@EXPORT`\nvariable are automatically exported into the caller's namespace.\nAlthough convenient, this practice is not polite, and may cause\nserious problems if the caller declares the same symbols.  The best\npractice is to place your symbols in `@EXPORT_OK` or `%EXPORT_TAGS`\nand let the caller choose exactly which symbols to export.\n\n    package Foo;\n\n    use Exporter 'import';\n    our @EXPORT      = qw(foo $bar @baz);                  # not ok\n    our @EXPORT_OK   = qw(foo $bar @baz);                  # ok\n    our %EXPORT_TAGS = ( all => [ qw(foo $bar @baz) ] );   # ok",
+        "filename" : "lib/HelloWorld.pm",
+        "line_number" : 6,
+        "policy" : "Perl::Critic::Policy::Modules::ProhibitAutomaticExportation"
+      },
+      "type" : "actionable"
+    }
+  ]
+}

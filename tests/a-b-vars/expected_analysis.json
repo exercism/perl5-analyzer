@@ -1,0 +1,15 @@
+{
+  "comments" : [
+    {
+      "comment" : "perl5.general.perlcritic",
+      "params" : {
+        "description" : "Using $a or $b outside sort()",
+        "diagnostics" : "The special variables `$a` and `$b` are reserved for `sort()` and similar\nfunctions which assign to them to iterate over pairs of values. These are\nglobal variables, and declaring them as lexical variables with `my` to use\nthem outside this context can break usage of these functions. Use different\nnames for your variables.\n\n    my $a = 1;                  # not ok\n    my $abc = 1;                # ok\n    sort { $a <=> $b } (3,2,1); # ok",
+        "filename" : "lib/HelloWorld.pm",
+        "line_number" : 6,
+        "policy" : "Perl::Critic::Policy::Community::DollarAB"
+      },
+      "type" : "actionable"
+    }
+  ]
+}

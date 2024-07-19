@@ -30,6 +30,6 @@ mkdir -p "${output_dir}"
 
 echo "${slug}: analyzing..."
 
-perl ./bin/run.pl "${slug}" "${solution_dir}" "${output_dir}"
+perl ./bin/run.pl "${solution_dir}" "${output_dir}"
 
 echo "${slug}: done"
