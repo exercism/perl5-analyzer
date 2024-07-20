@@ -1,0 +1,15 @@
+{
+  "comments" : [
+    {
+      "comment" : "perl5.general.perlcritic",
+      "params" : {
+        "description" : "Unreachable code",
+        "diagnostics" : "This policy prohibits code following a statement which unconditionally\nalters the program flow.  This includes calls to `exit`, `die`,\n`return`, `next`, `last` and `goto`.  Due to common usage,\n`croak` and `confess` from [Carp](https://metacpan.org/pod/Carp) are also included.\n\nCode is reachable if any of the following conditions are true:\n\n- Flow-altering statement has a conditional attached to it\n- Statement is on the right side of an operator `&&`, `||`, `//`, `and`, `or`, or `err`.\n- Code is prefixed with a label (can potentially be reached via `goto`)\n- Code is a subroutine",
+        "filename" : "lib/HelloWorld.pm",
+        "line_number" : 7,
+        "policy" : "Perl::Critic::Policy::ControlStructures::ProhibitUnreachableCode"
+      },
+      "type" : "actionable"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "comments" : [
+    {
+      "comment" : "perl5.general.perlcritic",
+      "params" : {
+        "description" : "Subroutine \"hello\" does not end with \"return\"",
+        "diagnostics" : "Require all subroutines to terminate explicitly with one of the\nfollowing: `return`, `carp`, `croak`, `die`, `exec`, `exit`,\n`goto`, or `throw`.\n\nSubroutines without explicit return statements at their ends can be\nconfusing.  It can be challenging to deduce what the return value will\nbe.\n\nFurthermore, if the programmer did not mean for there to be a\nsignificant return value, and omits a return statement, some of the\nsubroutine's inner data can leak to the outside.  Consider this case:\n\n    package Password;\n    # every time the user guesses the password wrong, its value\n    # is rotated by one character\n    my $password;\n    sub set_password {\n        $password = shift;\n    }\n    sub check_password {\n        my $guess = shift;\n        if ($guess eq $password) {\n            unlock_secrets();\n        } else {\n            $password = (substr $password, 1).(substr $password, 0, 1);\n        }\n    }\n    1;\n\nIn this case, the last statement in check\\_password() is the\nassignment.  The result of that assignment is the implicit return\nvalue, so a wrong guess returns the right password!  Adding a\n`return;` at the end of that subroutine solves the problem.\n\nThe only exception allowed is an empty subroutine.\n\nBe careful when fixing problems identified by this Policy; don't\nblindly put a `return;` statement at the end of every subroutine.",
+        "filename" : "lib/HelloWorld.pm",
+        "line_number" : 5,
+        "policy" : "Perl::Critic::Policy::Subroutines::RequireFinalReturn"
+      },
+      "type" : "actionable"
+    }
+  ]
+}
