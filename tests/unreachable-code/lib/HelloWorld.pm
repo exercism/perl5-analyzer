@@ -1,6 +1,6 @@
 package HelloWorld;
 
-use v5.40;
+use v5.42;
 
 sub hello () {
     return 'Goodbye, Mars!';
